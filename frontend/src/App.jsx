@@ -9,6 +9,7 @@ import { Footer } from './components/footer/Footer';
 import { About } from './pages/about/About';
 import { Gallery } from './pages/gallery/Gallery';
 import { Contact } from './pages/contact/Contact';
+import Payment from './pages/payment/Payment';
 
 const App = () => {
   useEffect(() => {
@@ -39,6 +40,7 @@ const App = () => {
 
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/payment' element={<Payment />} />
         </Routes>
         <Footer />
       </BrowserRouter>
