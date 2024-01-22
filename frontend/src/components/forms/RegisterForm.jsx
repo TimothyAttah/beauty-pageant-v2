@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { FadeIn } from '../fadeIn/FadeIn';
 import * as Styles from './FormStyles';
 import nicaFormLogo from '../../assets/nicaLogoForm.png';
+import { useDispatch } from 'react-redux';
+import { registerContestant } from '../../redux/actions/authActions';
 
 const formVariants = {
   hidden: {
@@ -29,13 +31,14 @@ export const RegisterForm = () => {
     schoolOrEmployemt: '',
     degreesOrAchievement: '',
     awards: '',
-    noPublishPhoto: '',
+    noPublishPhoto: false,
     parentSignature: '',
     parentDate: '',
     contestantSignature: '',
     contestantDate: '',
   };
   const [userData, setUserData] = useState(initialData);
+  const dispatch = useDispatch();
 
   const {
     contestantName,
@@ -65,7 +68,7 @@ export const RegisterForm = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    console.log(userData);
+    dispatch(registerContestant(userData));
   };
   return (
     <Styles.FormContainer>

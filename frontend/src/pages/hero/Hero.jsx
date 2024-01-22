@@ -20,16 +20,16 @@ export const Hero = () => {
         <Styles.HeroWrapper>
           <Styles.HeroMiddleSide>
             <Styles.HeroHeader>
-              <FadeIn center delay={0.2} direction='right'>
+              <FadeIn center='true' delay={0.2} direction='right'>
                 <h1>nica official nigeria ltd </h1>
               </FadeIn>
-              <FadeIn center delay={0.4} direction='right'>
+              <FadeIn center='true' delay={0.4} direction='right'>
                 <small>presents</small>
               </FadeIn>
-              <FadeIn center delay={0.6} direction='right'>
+              <FadeIn center='true' delay={0.6} direction='right'>
                 <h2>nigeria icon culture award</h2>
               </FadeIn>
-              <FadeIn center delay={0.8} direction='right'>
+              <FadeIn center='true' delay={0.8} direction='right'>
                 <p>the most prestigious culture award event in nigeria</p>
               </FadeIn>
             </Styles.HeroHeader>

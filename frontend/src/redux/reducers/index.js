@@ -1,5 +1,8 @@
 import { combineReducers } from 'redux';
+import auth from './authReducer';
+import constestants from './contestantReducer';
 
 export const reducers = combineReducers({
-  hello: () => 2 + 2,
+  auth,
+  constestants,
 });
