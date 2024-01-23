@@ -1,7 +1,7 @@
 import { CONTESTANTS } from '../types';
 
 const initialState = {
-  constestant: [],
+  constestants: [],
 };
 
 const constestants = (state = initialState, action) => {

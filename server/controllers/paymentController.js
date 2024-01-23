@@ -27,6 +27,14 @@ const paymentControllers = {
       res.status(500).json({ status: 'Failed', message: error.message });
     }
   },
+  getAllPayment: async (req, res) => {
+    try {
+      const response = await paymentInstance.getAllPayment();
+      res.status(200).json({ status: 'Success', data: response });
+    } catch (error) {
+      res.status(500).json({ status: 'Failed', message: error.message });
+    }
+  },
 };
 
 export default paymentControllers;

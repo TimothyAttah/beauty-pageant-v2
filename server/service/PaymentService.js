@@ -69,6 +69,18 @@ class PaymentService {
       }
     });
   }
+  getAllPayment() {
+    return new Promise(async (resolve, reject) => {
+      try {
+        // const reference = body.reference;
+        const transaction = await Payment.find().populate('paidBy');
+        return resolve(transaction);
+      } catch (error) {
+        error.source = 'Payment Receipt';
+        return reject(error);
+      }
+    });
+  }
 }
 
 export default PaymentService;

@@ -4,6 +4,8 @@ import { FadeIn } from '../../components/fadeIn/FadeIn';
 import * as Styles from './PaymentStyles';
 import PaystackPop from '@paystack/inline-js';
 import { useNavigate } from 'react-router-dom';
+import { startPayment, getPayment } from '../../redux/actions/paymentActions ';
+import { useDispatch } from 'react-redux';
 
 const Payment = () => {
   const [paymentData, setPaymentData] = useState({
@@ -11,7 +13,7 @@ const Payment = () => {
     email: '',
     amount: '',
   });
-  const navigation = useNavigate();
+  const dispatch = useDispatch();
 
   const handleInputs = (e) => {
     setPaymentData({ ...paymentData, [e.target.name]: e.target.value });
@@ -19,6 +21,10 @@ const Payment = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // dispatch(startPayment(paymentData));
+    // dispatch(getPayment());
+
     const paystack = new PaystackPop();
 
     paystack.newTransaction({
