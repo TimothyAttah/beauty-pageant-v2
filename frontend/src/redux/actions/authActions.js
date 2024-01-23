@@ -10,6 +10,8 @@ export const registerContestant = (contestantData) => async (dispatch) => {
       type: CONTESTANTS.REGISTER_CONTESTANT,
       payload: data,
     });
+
+    localStorage.setItem('contestant', JSON.stringify(data.newContestant));
     toast.success(data.msg);
   } catch (err) {
     if (err.response && err.response.data) {

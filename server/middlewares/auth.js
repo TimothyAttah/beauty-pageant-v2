@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import Contestant from '../models/contestantModel';
+import Contestant from '../models/contestantModel.js';
 
 const auth = (req, res, next) => {
   const { authorization } = req.headers;

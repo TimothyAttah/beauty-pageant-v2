@@ -1,54 +1,96 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container } from '../../styles/globalStyles';
 import { FadeIn } from '../../components/fadeIn/FadeIn';
 import * as Styles from './PaymentStyles';
+import PaystackPop from '@paystack/inline-js';
+import { useNavigate } from 'react-router-dom';
 
 const Payment = () => {
+  const [paymentData, setPaymentData] = useState({
+    name: '',
+    email: '',
+    amount: '',
+  });
+  const navigation = useNavigate();
+
+  const handleInputs = (e) => {
+    setPaymentData({ ...paymentData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const paystack = new PaystackPop();
+
+    paystack.newTransaction({
+      key: 'pk_test_07c16182445b8c7bf4c69e83f9d78738abdbd50c',
+      amount: paymentData.amount * 100,
+      email: paymentData.email,
+      name: paymentData.name,
+
+      onSuccess(transaction) {
+        console.log(transaction);
+        let message = `Payment Complete! Reference ${transaction.reference}`;
+        alert(message);
+
+        // navigation(transaction.redirecturl);
+      },
+
+      onCancel() {
+        alert('You have canceled the transaction.');
+      },
+    });
+
+    console.log(paymentData);
+  };
   return (
     <Styles.PaymentContainer>
       <Container>
         <h1>Payment Information</h1>
         <div>
-          <form>
+          <form onSubmit={handleSubmit}>
+            <Styles.PaymentInput>
+              <label htmlFor='amount'>Amount</label>
+              <input
+                type='text'
+                name='amount'
+                value={paymentData.amount}
+                onChange={handleInputs}
+              />
+            </Styles.PaymentInput>
             <Styles.PaymentInput>
               <label htmlFor='name'>Name</label>
-              <input type='text' />
+              <input
+                type='text'
+                name='name'
+                value={paymentData.name}
+                onChange={handleInputs}
+              />
             </Styles.PaymentInput>
             <Styles.PaymentInput>
               <label htmlFor='email'>Email</label>
-              <input type='text' />
+              <input
+                type='text'
+                name='email'
+                value={paymentData.email}
+                onChange={handleInputs}
+              />
             </Styles.PaymentInput>
-            <Styles.PaymentInput>
-              <label htmlFor='password'>Password</label>
-              <input type='text' />
-            </Styles.PaymentInput>
-            <Styles.PaymentInput>
-              <label htmlFor='city'>City</label>
-              <input type='text' />
-            </Styles.PaymentInput>
-            <Styles.PaymentInput>
-              <label htmlFor='Country'>Country</label>
-              <input type='text' />
-            </Styles.PaymentInput>
-            <Styles.PaymentInput>
-              <label htmlFor='state'>State</label>
-              <input type='text' />
-            </Styles.PaymentInput>
+
             <div>
-              <h2>Payment Method</h2>
+              {/* <h2>Payment Method</h2> */}
               <Styles.PaymentCardContainer>
-                <div>
+                {/* <div>
                   <h2>Stipe</h2>
                   <button>Pay via Stripe</button>
-                </div>
+                </div> */}
                 <div>
                   <h2>PayPal</h2>
                   <button>Pay via PayPal</button>
                 </div>
-                <div>
+                {/* <div>
                   <h2>RazorPay</h2>
                   <button>Pay via RazorPay</button>
-                </div>
+                </div> */}
               </Styles.PaymentCardContainer>
             </div>
           </form>

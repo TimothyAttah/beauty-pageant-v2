@@ -5,6 +5,7 @@ dotenv.config();
 import { connectDB } from './config/db.js';
 import { authRouters } from './routes/authRoutes.js';
 import { contestantRoutes } from './routes/contestantRouters.js';
+import paymentRoutes from './routes/payemtRoutes.js';
 
 connectDB();
 
@@ -19,6 +20,8 @@ app.get('/', (req, res) => {
 
 app.use('/api/auth', authRouters);
 app.use('/api/contestant', contestantRoutes);
+// app.use('/api/projectCleanEarth/pay', paymentRoutes);
+app.use('/api/pay', paymentRoutes);
 
 const PORT = process.env.PORT || 8080;
 
