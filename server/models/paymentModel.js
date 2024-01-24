@@ -14,6 +14,7 @@ const PaymentSchema = new mongoose.Schema(
     amount: {
       type: Number,
       required: true,
+      paidBy: { type: ObjectId, ref: 'Contestant' },
     },
     paidBy: { type: ObjectId, ref: 'Contestant' },
     reference: {
@@ -24,6 +25,7 @@ const PaymentSchema = new mongoose.Schema(
     status: {
       type: String,
       required: true,
+      paidBy: { type: ObjectId, ref: 'Contestant' },
     },
   },
   { timestamps: true },

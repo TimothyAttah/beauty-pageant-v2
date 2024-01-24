@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FadeIn } from '../fadeIn/FadeIn';
 import * as Styles from './FormStyles';
 import nicaFormLogo from '../../assets/nicaLogoForm.png';
+import { useDispatch } from 'react-redux';
+import { loginContestant } from '../../redux/actions/authActions';
+import { useNavigate } from 'react-router-dom';
+import { getPayment } from '../../redux/actions/paymentActions ';
 
 const formVariants = {
   hidden: {
@@ -14,13 +18,19 @@ const formVariants = {
 };
 
 export const LoginForm = () => {
+  const navigate = useNavigate();
   const initialData = {
     contestantName: '',
     email: '',
   };
   const [userData, setUserData] = useState(initialData);
+  const dispatch = useDispatch();
 
   const { contestantName, email } = userData;
+
+  useEffect(() => {
+    dispatch(getPayment());
+  });
 
   const handleInputs = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
@@ -28,7 +38,8 @@ export const LoginForm = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    console.log(userData);
+    dispatch(loginContestant(userData));
+    navigate('/profile');
   };
   return (
     <Styles.FormContainer>

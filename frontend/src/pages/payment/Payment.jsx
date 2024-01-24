@@ -6,6 +6,7 @@ import PaystackPop from '@paystack/inline-js';
 import { useNavigate } from 'react-router-dom';
 import { startPayment, getPayment } from '../../redux/actions/paymentActions ';
 import { useDispatch } from 'react-redux';
+import axios from 'axios';
 
 const Payment = () => {
   const [paymentData, setPaymentData] = useState({
@@ -19,32 +20,48 @@ const Payment = () => {
     setPaymentData({ ...paymentData, [e.target.name]: e.target.value });
   };
 
+  const startPaymentMethod = async (paymentData) => {
+    const api = `http://localhost:8080/api/pay`;
+
+    try {
+      const { data } = await axios.post(api, paymentData);
+      console.log(data);
+      // const redirectUrl = JSON.stringify(data).data.authorization_url;
+      const redirectUrl = data.data.data;
+
+      console.log(redirectUrl);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    // startPayment(paymentData);
 
-    // dispatch(startPayment(paymentData));
+    dispatch(startPayment(paymentData));
     // dispatch(getPayment());
 
-    const paystack = new PaystackPop();
+    // const paystack = new PaystackPop();
 
-    paystack.newTransaction({
-      key: 'pk_test_07c16182445b8c7bf4c69e83f9d78738abdbd50c',
-      amount: paymentData.amount * 100,
-      email: paymentData.email,
-      name: paymentData.name,
+    // paystack.newTransaction({
+    //   key: 'pk_test_07c16182445b8c7bf4c69e83f9d78738abdbd50c',
+    //   amount: paymentData.amount * 100,
+    //   email: paymentData.email,
+    //   name: paymentData.name,
 
-      onSuccess(transaction) {
-        console.log(transaction);
-        let message = `Payment Complete! Reference ${transaction.reference}`;
-        alert(message);
+    //   onSuccess(transaction) {
+    //     console.log(transaction);
+    //     let message = `Payment Complete! Reference ${transaction.reference}`;
+    //     alert(message);
 
-        // navigation(transaction.redirecturl);
-      },
+    //     // navigation(transaction.redirecturl);
+    //   },
 
-      onCancel() {
-        alert('You have canceled the transaction.');
-      },
-    });
+    //   onCancel() {
+    //     alert('You have canceled the transaction.');
+    //   },
+    // });
 
     console.log(paymentData);
   };

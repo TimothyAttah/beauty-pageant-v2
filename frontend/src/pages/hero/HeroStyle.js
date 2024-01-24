@@ -64,6 +64,28 @@ export const HeroHeader = styled.div`
     font-size: ${theme.fontSize.fslg};
     color: ${theme.color.bgLight};
   }
+
+  @media screen and (max-width: ${theme.screens.smallScreen}) {
+    h1 {
+      font-size: 24px;
+    }
+
+    small {
+      display: inline-block;
+      color: ${theme.color.textColor2};
+      font-size: ${theme.fontSize.fslg};
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: bold;
+    }
+    h2 {
+      font-size: ${theme.fontSize.fs2xl};
+    }
+
+    p {
+      font-size: 15px;
+    }
+  }
 `;
 export const HeroSubheader = styled.h2``;
 export const HeroLeftSide = styled.div`
@@ -151,9 +173,13 @@ export const HeroInfoFee = styled.div`
     font-weight: bold;
   }
 
+  @media screen and (max-width: ${theme.screens.mediumScreen}) {
+    transform: Skew(0deg) rotate(0);
+  }
+
   @media screen and (max-width: ${theme.screens.smallScreen}) {
     width: 180px;
-    height: 80px;
+    height: 90px;
 
     div:first-child {
       height: 25px;
@@ -290,6 +316,10 @@ export const HeroStarPrize = styled.ul`
     max-width: 500px;
     width: 100%;
     gap: 10px;
+  }
+
+  @media screen and (max-width: ${theme.screens.mediumScreen}) {
+    font-size: 14px;
   }
 `;
 

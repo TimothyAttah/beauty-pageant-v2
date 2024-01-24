@@ -22,6 +22,11 @@ const navData = [
     to: '/about',
   },
   {
+    name: 'Contestant',
+    // icon: <RiSuitcase3Line />,
+    to: '/contestant',
+  },
+  {
     name: 'Gallery',
     // icon: <RiBookReadFill />,
     to: '/gallery',

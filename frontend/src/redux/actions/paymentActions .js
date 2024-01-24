@@ -12,22 +12,31 @@ export const startPayment = (paymentData) => async (dispatch) => {
       payload: data,
     });
 
-    console.log(data.data);
-    const { status, access_code, authorization_url } = data.data;
-    window.location.href =
-      'https://api.paystack.co/transaction/verify_access_code/' + access_code;
-    // window.location.href = `${authorization_url}`;
+    console.log(data);
+
+    const { status, access_code, authorization_url, reference } =
+      data.data.data;
+
+    // window.location.href = redirectUrl;
+    if (authorization_url) {
+      window.location.href = `${authorization_url}`;
+    }
 
     // if (status === true) {
-    //   const { data } = await api.createPayment(access_code);
-
-    //   dispatch({
-    //     type: PAYMENT.CREATE_PAYMENT,
-    //     payload: data,
-    //   });
-
-    //   console.log('createPayment', data);
+    //   window.location.href = '/login';
     // }
+
+    if (data.status === 'Success') {
+      const { data } = await api.getPaymentReceipt(reference);
+
+      dispatch({
+        type: PAYMENT.GET_PAYMENT,
+        payload: data,
+      });
+
+      console.log('createPayment', data);
+      localStorage.setItem('payment', JSON.stringify(data));
+    }
 
     // localStorage.setItem('contestant', JSON.stringify(data.newContestant));
     // toast.success(data.msg);
@@ -40,7 +49,7 @@ export const startPayment = (paymentData) => async (dispatch) => {
 
 export const getPayment = (paymentData) => async (dispatch) => {
   try {
-    const { data } = await api.startPayment(paymentData);
+    const { data } = await api.getPaymentReceipt(paymentData);
 
     dispatch({
       type: PAYMENT.GET_PAYMENT,

@@ -23,6 +23,8 @@ export const getAllContestant = () => API.get('/contestant');
 // export const startPayment = (paymentData) => API.post('/pay', paymentData)
 
 export const startPayment = (paymentData) => API.post('/pay', paymentData);
-export const createPayment = (access_code) =>
-  API.get(`/pay/createPayment?reference=${access_code}`);
-export const getPayment = () => API.get('/pay/paystack');
+export const createPayment = (reference) =>
+  API.get(`/pay/createPayment?reference=${reference}`);
+
+export const getPaymentReceipt = (reference) =>
+  API.get('/pay/paymentDetails', reference);

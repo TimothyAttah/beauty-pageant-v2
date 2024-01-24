@@ -1,9 +1,8 @@
 import mongoose from 'mongoose';
-import jwt from 'jsonwebtoken';
 
-const ContestantSchema = new mongoose.Schema(
+const OtpSchema = new mongoose.Schema(
   {
-    contestantName: {
+    contestantFullName: {
       type: String,
     },
     age: {
@@ -22,9 +21,6 @@ const ContestantSchema = new mongoose.Schema(
       type: String,
     },
     address: {
-      type: String,
-    },
-    phoneNumber: {
       type: String,
     },
     email: {
@@ -61,23 +57,23 @@ const ContestantSchema = new mongoose.Schema(
     contestantDate: {
       type: String,
     },
+    phoneNumber: {
+      type: String,
+      required: true,
+    },
+    otp: {
+      type: String,
+      required: true,
+    },
+    // createdAt: {
+    //   type: Date,
+    //   default: Date.now,
+    //   index: { expires: 300 },
+    // },
+    // After 5 minutes it will be deleted automatically from the database
   },
   { timestamps: true },
 );
 
-ContestantSchema.methods.generateJWT = function () {
-  const token = jwt.sign(
-    {
-      _id: this._id,
-      phoneNumber: this.phoneNumber,
-      email: this.email,
-    },
-    process.env.JWT_SECRET,
-  );
-
-  return token;
-};
-
-const ContestantModel = mongoose.model('Contestants', ContestantSchema);
-
-export default ContestantModel;
+const OTPModel = mongoose.model('OTP', OtpSchema);
+export default OTPModel;

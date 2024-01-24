@@ -46,7 +46,7 @@ class PaymentService {
           const { email } = response.data.customer;
           const name = response.data.metadata.name;
           const newPayment = { reference, amount, email, name, status };
-          const payment = (await Payment.create(newPayment)).populate('paidBy');
+          const payment = await Payment.create(newPayment).populate('paidBy');
           return resolve(payment);
         });
       } catch (error) {

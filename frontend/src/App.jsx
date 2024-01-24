@@ -12,6 +12,7 @@ import Layout from './components/layout/Layout';
 import RequireAuth from './components/RequireAuth';
 import { useDispatch } from 'react-redux';
 import { getAllContestant } from './redux/actions/contestantActions';
+import { Profile } from './pages/profile/Profile';
 
 const App = () => {
   useEffect(() => {
@@ -42,13 +43,14 @@ const App = () => {
           {/** public routes */}
           <Route path='/' element={<Home />} />
           <Route path='register' element={<Register />} />
+          <Route path='login' element={<Login />} />
           <Route path='about' element={<About />} />
           <Route path='gallery' element={<Gallery />} />
           <Route path='contact' element={<Contact />} />
           <Route path='payment' element={<Payment />} />
           {/** private routes */}
           <Route element={<RequireAuth />}>
-            <Route path='login' element={<Login />} />
+            <Route path='profile' element={<Profile />} />
           </Route>
         </Route>
       </Routes>

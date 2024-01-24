@@ -1,6 +1,7 @@
 import express from 'express';
 import paymentControllers from '../controllers/paymentController.js';
 import paymentController2 from '../controllers/payment2.js';
+// import auth from '../middlewares/auth.js';
 
 const paymentRoutes = express.Router();
 paymentRoutes.post('/', paymentControllers.startPayment);

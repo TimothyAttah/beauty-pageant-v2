@@ -1,10 +1,10 @@
 import { useLocation, Navigate, Outlet } from 'react-router-dom';
+export const contestantAuth = JSON.parse(localStorage.getItem('user'));
 
 const RequireAuth = () => {
   const location = useLocation();
-  const contestant = JSON.parse(localStorage.getItem('contestant'));
 
-  return contestant ? (
+  return contestantAuth ? (
     <Outlet />
   ) : (
     <Navigate to='/' state={{ from: location }} replace />

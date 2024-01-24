@@ -6,6 +6,7 @@ import { connectDB } from './config/db.js';
 import { authRouters } from './routes/authRoutes.js';
 import { contestantRoutes } from './routes/contestantRouters.js';
 import paymentRoutes from './routes/payemtRoutes.js';
+import request from 'request';
 
 connectDB();
 
@@ -22,6 +23,38 @@ app.use('/api/auth', authRouters);
 app.use('/api/contestant', contestantRoutes);
 // app.use('/api/projectCleanEarth/pay', paymentRoutes);
 app.use('/api/pay', paymentRoutes);
+
+const sendOtp = async (req, res) => {
+  const data = {
+    api_key: 'TLB6anMweT3gqty1T9fwHI5wCN9HJHraZgr5glpqzGoOKdBXEpbe16PnNYjEi6',
+    message_type: 'NUMERIC',
+    to: 'eg. +2348103194335',
+    from: 'NICA',
+    channel: 'dnd',
+    pin_attempts: 10,
+    pin_time_to_live: 5,
+    pin_length: 6,
+    pin_placeholder: '< 1234 >',
+    message_text: 'Your pin is < 1234 >',
+    pin_type: 'NUMERIC',
+  };
+
+  const options = {
+    method: 'POST',
+    url: 'https://api.ng.termii.com/api/sms/otp/send',
+    headers: {
+      'Content-Type': ['application/json', 'application/json'],
+    },
+    body: JSON.stringify(data),
+  };
+
+  request(options, function (error, response) {
+    if (error) throw new Error(error);
+    console.log(response.body);
+  });
+};
+
+// sendOtp();
 
 const PORT = process.env.PORT || 8080;
 

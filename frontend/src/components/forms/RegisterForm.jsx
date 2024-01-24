@@ -4,13 +4,6 @@ import * as Styles from './FormStyles';
 import nicaFormLogo from '../../assets/nicaLogoForm.png';
 import { useDispatch } from 'react-redux';
 import { registerContestant } from '../../redux/actions/authActions';
-import {
-  Navigate,
-  Location,
-  useLocation,
-  useNavigate,
-  Link,
-} from 'react-router-dom';
 
 const formVariants = {
   hidden: {
@@ -46,8 +39,8 @@ export const RegisterForm = () => {
   };
   const [userData, setUserData] = useState(initialData);
   const dispatch = useDispatch();
-  const location = useLocation();
-  const navigate = useNavigate();
+  // const location = useLocation();
+  // const navigate = useNavigate();
 
   // paystackSecretKey = 'sk_test_d02fdf49cc29ae9822e788484a0d36205c90d2f4';
   // paystackPublicKey = 'pk_test_07c16182445b8c7bf4c69e83f9d78738abdbd50c';
@@ -81,7 +74,6 @@ export const RegisterForm = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     dispatch(registerContestant(userData));
-    navigate('/payment');
   };
   return (
     <Styles.FormContainer>
