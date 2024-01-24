@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { Container } from '../../styles/globalStyles';
-import { FadeIn } from '../../components/fadeIn/FadeIn';
+// import { FadeIn } from '../../components/fadeIn/FadeIn';
 import * as Styles from './PaymentStyles';
-import PaystackPop from '@paystack/inline-js';
-import { useNavigate } from 'react-router-dom';
-import { startPayment, getPayment } from '../../redux/actions/paymentActions ';
+// import PaystackPop from '@paystack/inline-js';
+import { startPayment } from '../../redux/actions/paymentActions ';
 import { useDispatch } from 'react-redux';
-import axios from 'axios';
+// import axios from 'axios';
 
 const Payment = () => {
   const [paymentData, setPaymentData] = useState({
@@ -20,20 +19,20 @@ const Payment = () => {
     setPaymentData({ ...paymentData, [e.target.name]: e.target.value });
   };
 
-  const startPaymentMethod = async (paymentData) => {
-    const api = `http://localhost:8080/api/pay`;
+  // const startPaymentMethod = async (paymentData) => {
+  //   const api = `http://localhost:8080/api/pay`;
 
-    try {
-      const { data } = await axios.post(api, paymentData);
-      console.log(data);
-      // const redirectUrl = JSON.stringify(data).data.authorization_url;
-      const redirectUrl = data.data.data;
+  //   try {
+  //     const { data } = await axios.post(api, paymentData);
+  //     console.log(data);
+  //     // const redirectUrl = JSON.stringify(data).data.authorization_url;
+  //     const redirectUrl = data.data.data;
 
-      console.log(redirectUrl);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  //     console.log(redirectUrl);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();

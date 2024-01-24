@@ -9,6 +9,7 @@ import { FaBars } from 'react-icons/fa';
 import { Button } from '../button/HeaderButton';
 import { AnimatePresence } from 'framer-motion';
 import { SideBar } from '../sideBar/SideBar';
+import { contestantAuth } from '../RequireAuth';
 
 const navData = [
   {
@@ -39,6 +40,10 @@ const navData = [
 ];
 
 export const Header = () => {
+  const handleLogout = () => {
+    localStorage.clear();
+    window.location.href = '/login';
+  };
   const [open, setOpen] = useState(false);
   return (
     <Styles.MainHeaderContainer>
@@ -65,17 +70,33 @@ export const Header = () => {
             </ul>
           </FadeIn>
         </Styles.HeaderNavWrapper>
-        <Styles.DivWrapper>
-          <FadeIn delay={0.4} direction='down'>
-            <Styles.HeaderBtn>
-              <Button to='/login'>Login</Button>
-              <Button to='/register'>Register</Button>
-            </Styles.HeaderBtn>
-            <Styles.FaBarsBox onClick={() => setOpen(true)}>
-              <FaBars />
-            </Styles.FaBarsBox>
-          </FadeIn>
-        </Styles.DivWrapper>
+        {contestantAuth ? (
+          <Styles.DivWrapper>
+            <FadeIn delay={0.4} direction='down'>
+              <Styles.HeaderBtn>
+                <Button to='/profile'>Profile</Button>
+                <Styles.Button onClick={handleLogout}>
+                  <button>Logout</button>
+                </Styles.Button>
+              </Styles.HeaderBtn>
+              <Styles.FaBarsBox onClick={() => setOpen(true)}>
+                <FaBars />
+              </Styles.FaBarsBox>
+            </FadeIn>
+          </Styles.DivWrapper>
+        ) : (
+          <Styles.DivWrapper>
+            <FadeIn delay={0.4} direction='down'>
+              <Styles.HeaderBtn>
+                <Button to='/login'>Login</Button>
+                <Button to='/register'>Register</Button>
+              </Styles.HeaderBtn>
+              <Styles.FaBarsBox onClick={() => setOpen(true)}>
+                <FaBars />
+              </Styles.FaBarsBox>
+            </FadeIn>
+          </Styles.DivWrapper>
+        )}
       </Container>
       <AnimatePresence>{open && <SideBar setOpen={setOpen} />}</AnimatePresence>
     </Styles.MainHeaderContainer>
