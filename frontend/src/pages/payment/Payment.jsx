@@ -38,7 +38,14 @@ const Payment = () => {
     e.preventDefault();
     // startPayment(paymentData);
 
-    dispatch(startPayment(paymentData));
+    if (
+      paymentData.amount !== '' &&
+      paymentData.email !== '' &&
+      paymentData.name !== ''
+    ) {
+      dispatch(startPayment(paymentData));
+    }
+
     // dispatch(getPayment());
 
     // const paystack = new PaystackPop();
@@ -61,8 +68,6 @@ const Payment = () => {
     //     alert('You have canceled the transaction.');
     //   },
     // });
-
-    console.log(paymentData);
   };
   return (
     <Styles.PaymentContainer>
@@ -76,6 +81,7 @@ const Payment = () => {
                 type='text'
                 name='amount'
                 value={paymentData.amount}
+                required
                 onChange={handleInputs}
               />
             </Styles.PaymentInput>
@@ -84,6 +90,7 @@ const Payment = () => {
               <input
                 type='text'
                 name='name'
+                required
                 value={paymentData.name}
                 onChange={handleInputs}
               />
@@ -93,26 +100,17 @@ const Payment = () => {
               <input
                 type='text'
                 name='email'
+                required
                 value={paymentData.email}
                 onChange={handleInputs}
               />
             </Styles.PaymentInput>
 
             <div>
-              {/* <h2>Payment Method</h2> */}
               <Styles.PaymentCardContainer>
-                {/* <div>
-                  <h2>Stipe</h2>
-                  <button>Pay via Stripe</button>
-                </div> */}
                 <div>
-                  <h2>PayPal</h2>
-                  <button>Pay via PayPal</button>
+                  <button>Make Payment</button>
                 </div>
-                {/* <div>
-                  <h2>RazorPay</h2>
-                  <button>Pay via RazorPay</button>
-                </div> */}
               </Styles.PaymentCardContainer>
             </div>
           </form>
