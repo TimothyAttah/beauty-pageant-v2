@@ -1,9 +1,9 @@
-import jwt from 'jsonwebtoken';
+// import jwt from 'jsonwebtoken';
 import Contestants from '../models/contestantModel.js';
 import _ from 'lodash';
-import axios from 'axios';
+// import axios from 'axios';
 import Otp from '../models/otpModel.js';
-import otpGenerators from 'otp-generator';
+// import otpGenerators from 'otp-generator';
 import bcrypt from 'bcryptjs';
 
 export const authControllers = {
@@ -175,7 +175,6 @@ export const authControllers = {
           contestantDate,
         });
 
-        // const contestant = new Contestants(_.pick(req.body, ['phoneNumber']));
         const token = contestant.generateJWT();
         const result = await contestant.save();
         const OTPDelete = await Otp.deleteMany({
