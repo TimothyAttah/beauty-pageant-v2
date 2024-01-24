@@ -12,10 +12,9 @@ export const startPayment = (paymentData) => async (dispatch) => {
       payload: data,
     });
 
-    console.log(data);
+    // console.log(data);
 
-    const { status, access_code, authorization_url, reference } =
-      data.data.data;
+    const { authorization_url, reference } = data.data.data;
 
     // window.location.href = redirectUrl;
     if (authorization_url) {
@@ -34,7 +33,7 @@ export const startPayment = (paymentData) => async (dispatch) => {
         payload: data,
       });
 
-      console.log('createPayment', data);
+      // console.log('createPayment', data);
       localStorage.setItem('payment', JSON.stringify(data));
     }
 
@@ -56,7 +55,7 @@ export const getPayment = (paymentData) => async (dispatch) => {
       payload: data,
     });
 
-    console.log(data.data);
+    // console.log(data.data);
     // if (data.data.status === true) {
     //   window.location.href = `https://checkout.paystack.com/h4ss3fej3wtf2z3`;
     // }
