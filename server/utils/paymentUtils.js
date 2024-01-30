@@ -6,7 +6,7 @@ const paystack = (request) => {
       url: 'https://api.paystack.co/transaction/initialize',
       headers: {
         authorization:
-          'Bearer sk_test_d02fdf49cc29ae9822e788484a0d36205c90d2f4',
+          'Bearer sk_test_532e2a95b53164b6b77c5521a741f7258bf88efe',
         'content-type': 'application/json',
         'cache-control': 'no-cache',
       },
@@ -26,7 +26,7 @@ const paystack = (request) => {
         'https://api.paystack.co/transaction/verify/' + encodeURIComponent(ref),
       headers: {
         authorization:
-          'Bearer sk_test_d02fdf49cc29ae9822e788484a0d36205c90d2f4',
+          'Bearer   sk_test_532e2a95b53164b6b77c5521a741f7258bf88efe',
         'content-type': 'application/json',
         'cache-control': 'no-cache',
       },
