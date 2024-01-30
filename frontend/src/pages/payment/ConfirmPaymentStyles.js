@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { theme } from '../../themes';
 
-export const PaymentContainer = styled.div`
+export const ConfirmPaymentContainer = styled.div`
   padding: 100px 0;
   display: flex;
   flex-direction: column;
@@ -14,47 +14,49 @@ export const PaymentContainer = styled.div`
   border-radius: 10px;
   /* box-shadow: 7px 7px 5px 0 rgba(50, 50, 50, 0.75); */
   box-shadow: ${theme.shadow.mainShadow};
-  h1,
-  h2 {
+`;
+
+export const InfoBox = styled.div`
+  text-align: center;
+  padding-bottom: 50px;
+  h1 {
     color: ${theme.color.textColor2};
+    text-transform: capitalize;
+  }
+  small {
+    color: ${theme.color.textLight};
+    font-size: 20px;
   }
 
   @media screen and (max-width: ${theme.screens.smallScreen}) {
     h1 {
-      text-align: center;
-      line-height: 35px;
-      margin-bottom: 30px;
+      font-size: 25px;
+    }
+    small {
+      font-size: 16px;
     }
   }
 `;
-
-export const PaymentInput = styled.div`
-  margin: 10px 0;
+export const Form = styled.form`
+  text-align: center;
   label {
     display: inline-block;
-    color: ${theme.color.textColor};
+    font-size: 16px;
+    text-align: center;
+    color: ${theme.color.textColor2};
+    text-transform: capitalize;
   }
   input {
-    width: 100%;
-    border: 1px solid ${theme.color.textColor};
-    padding: 10px;
-    background: inherit;
-    color: ${theme.color.textColor};
-    border-radius: 5px;
-    margin-bottom: 10px;
+    display: block;
+    height: 50px;
+    width: 250px;
     background: transparent;
-    border: 1px solid ${theme.color.textColor};
+    border: 1px solid ${theme.color.textColor2};
     border-radius: 10px;
-    /* padding: 0 10px; */
+    padding: 0 10px;
     font-size: 20px;
     color: ${theme.color.textLight};
   }
-`;
-
-export const PaymentCardContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 
   button {
     margin-top: 20px;

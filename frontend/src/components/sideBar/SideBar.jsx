@@ -103,7 +103,11 @@ const navDataWithoutLogin = [
 export const SideBar = ({ setOpen }) => {
   const navigate = useNavigate();
   const handleLogout = () => {
-    localStorage.clear();
+    // localStorage.removeItem('user');
+    localStorage.removeItem({
+      user: 'user',
+      jwt: 'jwt',
+    });
     setOpen(false);
     navigate('/login');
     window.location.href = '/login';

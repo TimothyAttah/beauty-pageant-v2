@@ -12,30 +12,37 @@ export const startPayment = (paymentData) => async (dispatch) => {
       payload: data,
     });
 
-    // console.log(data);
+    console.log(data.data);
 
     const { authorization_url, reference } = data.data.data;
 
-    // window.location.href = redirectUrl;
+    localStorage.setItem('referenceCode', reference);
     if (authorization_url) {
       window.location.href = `${authorization_url}`;
     }
 
-    // if (status === true) {
-    //   window.location.href = '/login';
+    // const timeout = setTimeout(() => {
+    //   console.log('This is time with clearing');
+    // }, 6000);
+
+    // if (true) {
+    //   clearTimeout(timeout);
     // }
 
-    if (data.status === 'Success') {
-      const { data } = await api.getPaymentReceipt(reference);
+    // if (reference)
+    //   if (data.status === 'Success') {
+    //     const { data } = await api.getPaymentReceipt(reference);
 
-      dispatch({
-        type: PAYMENT.GET_PAYMENT,
-        payload: data,
-      });
+    //     dispatch({
+    //       type: PAYMENT.GET_PAYMENT,
+    //       payload: data,
+    //     });
 
-      // console.log('createPayment', data);
-      localStorage.setItem('payment', JSON.stringify(data));
-    }
+    //     console.log('createPayment', data);
+    //     // localStorage.setItem('payment', JSON.stringify(data.data));
+
+    //     JSON.stringify(localStorage.setItem('payment', data.data));
+    //   }
 
     // localStorage.setItem('contestant', JSON.stringify(data.newContestant));
     // toast.success(data.msg);

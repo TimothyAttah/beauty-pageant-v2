@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { Container } from '../../styles/globalStyles';
-// import { FadeIn } from '../../components/fadeIn/FadeIn';
+import { FadeIn } from '../../components/fadeIn/FadeIn';
 import * as Styles from './PaymentStyles';
 // import PaystackPop from '@paystack/inline-js';
 import { startPayment } from '../../redux/actions/paymentActions ';
 import { useDispatch } from 'react-redux';
 // import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Payment = () => {
+  const navigate = useNavigate();
   const [paymentData, setPaymentData] = useState({
     name: '',
     email: '',
@@ -34,9 +36,20 @@ const Payment = () => {
   //   }
   // };
 
+  // useEffect(() => {
+  //   if (
+  //     paymentData.amount !== '' &&
+  //     paymentData.email !== '' &&
+  //     paymentData.name !== ''
+  //   ) {
+  //     setTimeout(() => {
+  //       navigate('/confirm-payment');
+  //     }, 8000);
+  //   }
+  // }, [paymentData, navigate]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // startPayment(paymentData);
 
     if (
       paymentData.amount !== '' &&
@@ -44,7 +57,12 @@ const Payment = () => {
       paymentData.name !== ''
     ) {
       dispatch(startPayment(paymentData));
+      navigate('/confirm-payment');
     }
+
+    // setTimeout(() => {
+    //   return navigate('/confirm-payment');
+    // }, 2000);
 
     // dispatch(getPayment());
 
@@ -72,45 +90,59 @@ const Payment = () => {
   return (
     <Styles.PaymentContainer>
       <Container>
-        <h1>Payment Information</h1>
+        <FadeIn delay={0.2} direction='down'>
+          <h1>Payment Information</h1>
+        </FadeIn>
         <div>
           <form onSubmit={handleSubmit}>
             <Styles.PaymentInput>
-              <label htmlFor='amount'>Amount</label>
-              <input
-                type='text'
-                name='amount'
-                value={paymentData.amount}
-                required
-                onChange={handleInputs}
-              />
+              <FadeIn delay={0.4} direction='down'>
+                <label htmlFor='amount'>Amount</label>
+              </FadeIn>
+              <FadeIn delay={0.4} direction='down'>
+                <input
+                  type='text'
+                  name='amount'
+                  value={paymentData.amount}
+                  required
+                  onChange={handleInputs}
+                />
+              </FadeIn>
             </Styles.PaymentInput>
             <Styles.PaymentInput>
-              <label htmlFor='name'>Name</label>
-              <input
-                type='text'
-                name='name'
-                required
-                value={paymentData.name}
-                onChange={handleInputs}
-              />
+              <FadeIn delay={0.6} direction='down'>
+                <label htmlFor='name'>Name</label>
+              </FadeIn>
+              <FadeIn delay={0.6} direction='down'>
+                <input
+                  type='text'
+                  name='name'
+                  required
+                  value={paymentData.name}
+                  onChange={handleInputs}
+                />
+              </FadeIn>
             </Styles.PaymentInput>
             <Styles.PaymentInput>
-              <label htmlFor='email'>Email</label>
-              <input
-                type='text'
-                name='email'
-                required
-                value={paymentData.email}
-                onChange={handleInputs}
-              />
+              <FadeIn delay={0.8} direction='down'>
+                <label htmlFor='email'>Email</label>
+              </FadeIn>
+              <FadeIn delay={0.8} direction='down'>
+                <input
+                  type='text'
+                  name='email'
+                  required
+                  value={paymentData.email}
+                  onChange={handleInputs}
+                />
+              </FadeIn>
             </Styles.PaymentInput>
 
             <div>
               <Styles.PaymentCardContainer>
-                <div>
+                <FadeIn delay={0.6} direction='up'>
                   <button>Make Payment</button>
-                </div>
+                </FadeIn>
               </Styles.PaymentCardContainer>
             </div>
           </form>

@@ -11,7 +11,8 @@ export const registerContestant = (contestantData) => async (dispatch) => {
       payload: data,
     });
 
-    localStorage.setItem('contestant', JSON.stringify(data.newContestant));
+    localStorage.setItem('contestant', JSON.stringify(data.data));
+    localStorage.setItem('jwt', data.token);
     toast.success(data.msg);
 
     window.location.href = '/payment';

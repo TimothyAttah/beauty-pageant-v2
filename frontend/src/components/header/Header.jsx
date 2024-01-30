@@ -41,7 +41,11 @@ const navData = [
 
 export const Header = () => {
   const handleLogout = () => {
-    localStorage.clear();
+    // localStorage.removeItem('user');
+    localStorage.removeItem({
+      user: 'user',
+      jwt: 'jwt',
+    });
     window.location.href = '/login';
   };
   const [open, setOpen] = useState(false);
