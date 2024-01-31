@@ -3,7 +3,8 @@ import { theme } from '../../themes';
 
 export const SliderContainer = styled.div`
   height: 650px;
-  width: 800px;
+  max-width: 800px;
+  width: 100%;
   overflow: hidden;
   position: relative;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -16,6 +17,14 @@ export const SliderContainer = styled.div`
 
   .active-dot {
     background: ${theme.color.bgLight};
+  }
+
+  @media screen and (max-width: ${theme.screens.mediumScreen}) {
+    height: 500px;
+  }
+
+  @media screen and (max-width: ${theme.screens.smallScreen}) {
+    height: 400px;
   }
 `;
 
@@ -79,6 +88,26 @@ export const Slide = styled.div`
       right: 20px;
       transform: translateY(-60%);
     `}
+
+     @media screen and (max-width: ${theme.screens.smallScreen}) {
+    width: 30px;
+    height: 30px;
+    svg {
+      font-size: 20px;
+      line-height: 38px;
+    }
+
+    ${(props) =>
+      props.left &&
+      css`
+        left: 10px;
+      `}
+    ${(props) =>
+      props.right &&
+      css`
+        right: 10px;
+      `}
+  }
 `;
 
 export const BtnSliders = styled.div`
@@ -92,11 +121,27 @@ export const BtnSliders = styled.div`
     height: 15px;
     width: 50px;
     border: 2px solid ${theme.color.bgLight};
-    margin: 0 3px;
+    margin: 0 5px;
     cursor: pointer;
 
     :hover {
       background: ${theme.color.bgLight};
+    }
+  }
+
+  @media screen and (max-width: ${theme.screens.mediumScreen}) {
+    span {
+      width: 20px;
+      margin: 0 5px;
+      /* border-radius: 50%; */
+    }
+  }
+
+  @media screen and (max-width: ${theme.screens.smallScreen}) {
+    span {
+      width: 12px;
+      margin: 0 3px;
+      border-radius: 50%;
     }
   }
 `;

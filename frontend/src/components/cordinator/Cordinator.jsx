@@ -21,7 +21,7 @@ const Cordinator = () => {
       </Styles.Title>
       <Styles.CordinatorWrapper>
         <Styles.ImgBox>
-          <img src={sliderImg5} alt='img' />
+          <img src={sliderImg6} alt='img' />
         </Styles.ImgBox>
         <Styles.InfoBox>
           <Styles.InfoTitle primary='true'>
@@ -65,6 +65,9 @@ const Cordinator = () => {
             </Styles.TitleWrapper>
             <p>May 26, 2024</p>
           </Styles.InfoTitle>
+          <Styles.ImgBox>
+            <img src={sliderImg5} alt='img' />
+          </Styles.ImgBox>
           <Styles.InfoTitle primary='true'>
             <p>Ready to champion Nigeria's cultural excellence?</p>
             <p>

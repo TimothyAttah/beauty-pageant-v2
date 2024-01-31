@@ -28,7 +28,7 @@ export const Contact = () => {
                 <FaPhone />
               </Styles.SvgBox>
               <h3>Call us</h3>
-              <p>647-526-2148</p>
+              <p>+2348166960006</p>
             </Styles.ContactInfoItem>
             <Styles.ContactInfoItem>
               <Styles.SvgBox>

@@ -9,7 +9,9 @@ export const Footer = () => {
         <Styles.FooterIconWrapper>
           <h4>Contact Us</h4>
           <small>Call us 24/7</small>
-          <h2>647-526-2148</h2>
+          <p>+2348166960006</p>
+          <p>+2348143433988</p>
+          <p>+2349043631090</p>
           <Styles.FooterIconLists>
             <li>
               <Link>
