@@ -1,31 +1,90 @@
 import React, { useState } from 'react';
 import * as Styles from './SliderStyles';
-import { RiArrowDropLeftFill, RiArrowDropRightFill } from 'react-icons/ri';
+import img1 from '../../assets/gallery1.png';
+import img2 from '../../assets/gallery2.png';
+import img3 from '../../assets/gallery3.png';
+import img4 from '../../assets/gallery4.png';
+import img5 from '../../assets/gallery5.png';
+import sliderImg1 from '../../assets/IMG-20240130-WA0002.jpg';
+import sliderImg2 from '../../assets/IMG-20240130-WA0003.jpg';
+import sliderImg3 from '../../assets/IMG-20240130-WA0004.jpg';
+import sliderImg4 from '../../assets/IMG-20240130-WA0005.jpg';
+import sliderImg5 from '../../assets/IMG-20240130-WA0006.jpg';
+import sliderImg6 from '../../assets/IMG-20240130-WA0007.jpg';
+import sliderImg7 from '../../assets/IMG-20240130-WA0008.jpg';
+import sliderImg8 from '../../assets/IMG-20240130-WA0009.jpg';
+import sliderImg9 from '../../assets/IMG-20240130-WA0010.jpg';
+import sliderImg10 from '../../assets/IMG-20240130-WA0011.jpg';
+import sliderImg11 from '../../assets/IMG-20240130-WA0012.jpg';
+import sliderImg12 from '../../assets/IMG-20240130-WA0013.jpg';
 
-const Slider = ({ imgArr }) => {
-  const [x, setX] = useState(0);
-  const goLeft = () => {
-    x === 0 ? setX(-100 * (imgArr.length - 1)) : setX(x + 100);
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+
+const imgArr = [
+  sliderImg1,
+  sliderImg2,
+  sliderImg3,
+  sliderImg4,
+  sliderImg7,
+  sliderImg8,
+  sliderImg9,
+  sliderImg10,
+  sliderImg11,
+  sliderImg12,
+];
+
+export const Slider = () => {
+  const [slideIndex, setSlideIndex] = useState(1);
+
+  const nextSlide = () => {
+    if (slideIndex !== imgArr.length) {
+      setSlideIndex(slideIndex + 1);
+    } else if (slideIndex === imgArr.length) {
+      setSlideIndex(1);
+    }
   };
-  const goRight = () => {
-    x === -100 * (imgArr.length - 1) ? setX(0) : setX(x - 100);
+
+  const prevSlide = () => {
+    if (slideIndex !== 1) {
+      setSlideIndex(slideIndex - 1);
+    } else if (slideIndex === 1) {
+      setSlideIndex(imgArr.length);
+    }
+  };
+
+  const moveBtnSlide = (i) => {
+    setSlideIndex(i);
   };
 
   return (
     <Styles.SliderContainer>
-      {imgArr.map((item, index) => (
-        <Styles.Slide key={index} style={{ transform: `translateX(${x}%)` }}>
-          {item}
+      <Styles.SliderWrapper>
+        {imgArr.map((obj, index) => (
+          <Styles.SliderImages
+            key={index}
+            className={slideIndex === index + 1 ? 'active-anim' : ''}
+          >
+            <img src={obj} alt='img' />
+          </Styles.SliderImages>
+        ))}
+
+        <Styles.Slide left='true' onClick={() => prevSlide()}>
+          <FaArrowLeft />
         </Styles.Slide>
-      ))}
-      <button id='goLeft' onClick={goLeft}>
-        <RiArrowDropLeftFill />
-      </button>
-      <button id='goRight' onClick={goRight}>
-        <RiArrowDropRightFill />
-      </button>
+        <Styles.Slide right='true' onClick={() => nextSlide()}>
+          <FaArrowRight />
+        </Styles.Slide>
+      </Styles.SliderWrapper>
+
+      <Styles.BtnSliders>
+        {Array.from({ length: 10 }).map((item, i) => (
+          <span
+            key={i}
+            className={slideIndex === i + 1 ? 'active-dot' : ''}
+            onClick={() => moveBtnSlide(i + 1)}
+          ></span>
+        ))}
+      </Styles.BtnSliders>
     </Styles.SliderContainer>
   );
 };
-
-export default Slider;
