@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import * as Styles from './SliderStyles';
-import img1 from '../../assets/gallery1.png';
-import img2 from '../../assets/gallery2.png';
-import img3 from '../../assets/gallery3.png';
-import img4 from '../../assets/gallery4.png';
-import img5 from '../../assets/gallery5.png';
+
 import sliderImg1 from '../../assets/IMG-20240130-WA0002.jpg';
 import sliderImg2 from '../../assets/IMG-20240130-WA0003.jpg';
 import sliderImg3 from '../../assets/IMG-20240130-WA0004.jpg';
@@ -25,6 +21,8 @@ const imgArr = [
   sliderImg2,
   sliderImg3,
   sliderImg4,
+  sliderImg5,
+  sliderImg6,
   sliderImg7,
   sliderImg8,
   sliderImg9,
@@ -77,7 +75,7 @@ export const Slider = () => {
       </Styles.SliderWrapper>
 
       <Styles.BtnSliders>
-        {Array.from({ length: 10 }).map((item, i) => (
+        {Array.from({ length: 12 }).map((item, i) => (
           <span
             key={i}
             className={slideIndex === i + 1 ? 'active-dot' : ''}

@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { theme } from '../../themes';
 
 export const SliderContainer = styled.div`
-  height: 700px;
+  height: 650px;
   width: 800px;
   overflow: hidden;
   position: relative;

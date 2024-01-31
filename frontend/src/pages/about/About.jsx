@@ -87,7 +87,7 @@ export const About = () => {
           <h4>For Enquires and Sponsorship Contact</h4>
           <div>
             <FaWhatsapp />
-            <p>+234816696006, +2348143433988, +2349043631090</p>
+            <p>+2348166960006, +2348143433988, +2349043631090</p>
           </div>
         </Styles.EnquiresBox>
       </Container>

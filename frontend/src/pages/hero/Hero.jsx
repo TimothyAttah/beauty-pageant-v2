@@ -8,6 +8,7 @@ import { FaStar } from 'react-icons/fa';
 // import heroVideo from '../../assets/heroVic3/heroVideo (copy).mp4';
 import heroVideo from './heroVic.mp4';
 import { Slider } from '../../components/slider/Slider';
+import Cordinator from '../../components/cordinator/Cordinator';
 
 export const Hero = () => {
   window.addEventListener('error', (e) => {
@@ -100,6 +101,7 @@ export const Hero = () => {
             register as a participate
           </Button>
         </Styles.HeroBtn>
+        <Cordinator />
       </Styles.HeroContainer>
     </Container>
   );
