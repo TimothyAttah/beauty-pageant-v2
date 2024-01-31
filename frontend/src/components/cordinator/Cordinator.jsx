@@ -1,5 +1,5 @@
 import React from 'react';
-import { FadeIn } from '../fadeIn/FadeIn';
+// import { FadeIn } from '../fadeIn/FadeIn';
 import { FaTrophy } from 'react-icons/fa';
 import sliderImg5 from '../../assets/IMG-20240130-WA0006.jpg';
 import sliderImg6 from '../../assets/IMG-20240130-WA0007.jpg';
