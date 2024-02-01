@@ -14,7 +14,10 @@ export const Footer = () => {
           <p>+2349043631090</p>
           <Styles.FooterIconLists>
             <li>
-              <Link>
+              <Link
+                to='https://www.facebook.com/profile.php?id=61551628983056&mibextid=ZbWKwL'
+                target='_blank'
+              >
                 <span></span>
                 <span></span>
                 <span></span>
@@ -25,35 +28,16 @@ export const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link>
+              <Link
+                to='https://www.instagram.com/nica_9ja?igsh=MzRlODBiNWFlZA=='
+                target='_blank'
+              >
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
                 <span>
                   <FaInstagram />
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span>
-                  <FaYoutube />
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span>
-                  <FaTwitter />
                 </span>
               </Link>
             </li>
