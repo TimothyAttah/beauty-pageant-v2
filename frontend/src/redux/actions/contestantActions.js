@@ -7,9 +7,9 @@ export const getAllContestant = () => async (dispatch) => {
     const { data } = await api.getAllContestant();
     dispatch({
       type: CONTESTANTS.GET_ALL_CONTESTANTS,
-      payload: data,
+      payload: data.data,
     });
-    console.log(data);
+    console.log(data.data);
   } catch (err) {
     if (err.response && err.response.data) {
       toast.error(err.response.data.msg);

@@ -87,9 +87,10 @@ export const AboutCardBox = styled.div`
 export const AboutCardWrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   text-align: center;
-  /* flex-wrap: wrap; */
+  gap: 20px;
+  flex-wrap: wrap;
 
   @media screen and (max-width: ${theme.screens.mediumScreen}) {
     flex-direction: column;

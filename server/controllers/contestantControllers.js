@@ -5,7 +5,7 @@ export const contestantController = {
     try {
       const contestants = await Contestants.find();
       // res.status(200).json({ msg: 'All Contestants', contestants });
-      res.send(contestants);
+      return res.status(200).json({ data: contestants });
     } catch (err) {
       res.status(500).json({ msg: err.message });
     }

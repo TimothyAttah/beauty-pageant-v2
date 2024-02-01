@@ -9,7 +9,9 @@ export const About = () => {
     <Styles.AboutContainer id='about'>
       <Container>
         <Styles.SectionTitle>
-          <Styles.AboutTitle>about us</Styles.AboutTitle>
+          <FadeIn center='true' delay={0.3} direction='down'>
+            <Styles.AboutTitle>about us</Styles.AboutTitle>
+          </FadeIn>
           <FadeIn delay={0.4} direction='left'>
             <Styles.AboutText>
               Welcome to our prestigious pageantry competition, where beauty,

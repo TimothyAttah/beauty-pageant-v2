@@ -59,8 +59,9 @@ export const HeaderNavWrapper = styled.nav`
     }
 
     a {
-      width: 100px;
+      /* width: 100px; */
       height: 40px;
+      padding: 0 10px;
       display: flex;
       align-items: center;
       justify-content: center;

@@ -9,7 +9,7 @@ const constestants = (state = initialState, action) => {
     case CONTESTANTS.GET_ALL_CONTESTANTS:
       return {
         ...state,
-        constestants: [action.payload, ...state.constestants],
+        constestants: action.payload,
       };
     case CONTESTANTS.GET_ONE_CONTESTANTS:
       return {
