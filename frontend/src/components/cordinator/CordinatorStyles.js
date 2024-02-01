@@ -14,6 +14,7 @@ export const Title = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 40px;
   padding: 50px 0;
 
   svg {

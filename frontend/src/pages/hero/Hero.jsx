@@ -73,26 +73,32 @@ export const Hero = () => {
           </FadeIn>
         </Styles.HeroInfo>
         <Styles.HeroStarPrizes>
-          <h2>Star Prizes</h2>
-          <Styles.HeroStarPrize>
-            <li>
-              <FaStar /> Official car
-            </li>
-            <li>
-              <FaStar /> a trip to ghana
-            </li>
-            <li>
-              <FaStar /> a cash price
-            </li>
-            <li>
-              <FaStar /> one year movie endorsement
-            </li>
-            <li>
-              <FaStar /> one year brand ambassador
-            </li>
-          </Styles.HeroStarPrize>
+          <FadeIn center='true' delay={0.4} direction='down'>
+            <h2>Star Prizes</h2>
+          </FadeIn>
+          <FadeIn center='true' delay={0.6} direction='down'>
+            <Styles.HeroStarPrize>
+              <li>
+                <FaStar /> Official car
+              </li>
+              <li>
+                <FaStar /> a trip to ghana
+              </li>
+              <li>
+                <FaStar /> a cash price
+              </li>
+              <li>
+                <FaStar /> one year movie endorsement
+              </li>
+              <li>
+                <FaStar /> one year brand ambassador
+              </li>
+            </Styles.HeroStarPrize>
+          </FadeIn>
         </Styles.HeroStarPrizes>
-        <Slider />
+        <FadeIn center='true' delay={1.2} direction='down'>
+          <Slider />
+        </FadeIn>
         <Styles.HeroBtn>
           <Button to='/about' width='180px'>
             learn more
