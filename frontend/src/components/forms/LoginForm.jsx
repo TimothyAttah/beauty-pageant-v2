@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { loginContestant } from '../../redux/actions/authActions';
 import { useNavigate } from 'react-router-dom';
 import { getPayment } from '../../redux/actions/paymentActions ';
+import { contestantAuth } from '../RequireAuth';
 
 const formVariants = {
   hidden: {
@@ -39,7 +40,7 @@ export const LoginForm = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     dispatch(loginContestant(userData));
-    navigate('/profile');
+    navigate(`/profile/${contestantAuth?._id}`);
   };
   return (
     <Styles.FormContainer>

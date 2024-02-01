@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-export const baseURL = 'http://localhost:8080/api';
-// export const baseURL = 'https://beauty-pageant-v2-5f26.vercel.app/api';
+// export const baseURL = 'http://localhost:8080/api';
+export const baseURL = 'https://beauty-pageant-v2-5f26.vercel.app/api';
 
 const API = axios.create({ baseURL: baseURL });
 
