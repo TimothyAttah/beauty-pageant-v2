@@ -61,6 +61,10 @@ const ContestantSchema = new mongoose.Schema(
     contestantDate: {
       type: String,
     },
+    profilePicture: {
+      type: String,
+      default: '',
+    },
   },
   { timestamps: true },
 );

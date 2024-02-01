@@ -64,7 +64,7 @@ const App = () => {
             <Route path='login' element={<Login />} />
           </Route>
           <Route element={<RequireAuth />}>
-            <Route path='profile' element={<Profile />} />
+            <Route path='profile/:id' element={<Profile />} />
           </Route>
         </Route>
       </Routes>

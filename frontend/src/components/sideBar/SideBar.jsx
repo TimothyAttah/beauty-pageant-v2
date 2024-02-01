@@ -96,18 +96,18 @@ const navDataWithoutLogin = [
   {
     name: 'Profile',
     // icon: <RiSuitcase3Line />,
-    to: '/profile',
+    to: `/profile/${contestantAuth?._id}`,
   },
 ];
 
 export const SideBar = ({ setOpen }) => {
   const navigate = useNavigate();
   const handleLogout = () => {
-    // localStorage.removeItem('user');
-    localStorage.removeItem({
-      user: 'user',
-      jwt: 'jwt',
-    });
+    localStorage.removeItem('user');
+    // localStorage.removeItem({
+    //   user: 'user',
+    //   jwt: 'jwt',
+    // });
     setOpen(false);
     navigate('/login');
     window.location.href = '/login';

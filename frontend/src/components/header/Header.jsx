@@ -41,11 +41,11 @@ const navData = [
 
 export const Header = () => {
   const handleLogout = () => {
-    // localStorage.removeItem('user');
-    localStorage.removeItem({
-      user: 'user',
-      jwt: 'jwt',
-    });
+    localStorage.removeItem('user');
+    // localStorage.removeItem({
+    //   user: 'user',
+    //   jwt: 'jwt',
+    // });
     window.location.href = '/login';
   };
   const [open, setOpen] = useState(false);
@@ -78,7 +78,7 @@ export const Header = () => {
           <Styles.DivWrapper>
             <FadeIn delay={0.4} direction='down'>
               <Styles.HeaderBtn>
-                <Button to='/profile'>Profile</Button>
+                <Button to={`/profile/${contestantAuth?._id}`}>Profile</Button>
                 <Styles.Button onClick={handleLogout}>
                   <button>Logout</button>
                 </Styles.Button>

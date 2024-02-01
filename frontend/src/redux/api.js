@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// export const baseURL = 'http://localhost:8080/api';
-export const baseURL = 'https://beauty-pageant-v2-5f26.vercel.app/api';
+export const baseURL = 'http://localhost:8080/api';
+// export const baseURL = 'https://beauty-pageant-v2-5f26.vercel.app/api';
 
 const API = axios.create({ baseURL: baseURL });
 
@@ -20,6 +20,7 @@ export const loginContestant = (contestantData) =>
   API.post('/auth/login', contestantData);
 
 export const getAllContestant = () => API.get('/contestant');
+export const getOneContestant = (id) => API.get(`/contestant/${id}`);
 
 // export const startPayment = (paymentData) => API.post('/pay', paymentData)
 
