@@ -24,7 +24,7 @@ export const getOneContestant = (id) => async (dispatch) => {
       type: CONTESTANTS.GET_ONE_CONTESTANTS,
       payload: data.data,
     });
-    console.log('GET_ONE_CONTESTANTS', data);
+    console.log('GET_ONE_CONTESTANTS', data.data);
   } catch (err) {
     if (err.response && err.response.data) {
       toast.error(err.response.data.msg);

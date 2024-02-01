@@ -6,13 +6,22 @@ export const ContestantContainer = styled.div`
   padding: 100px 0;
 `;
 
-export const ProfileCard = styled.div`
-  max-width: 300px;
+export const ContestantWrapper = styled.div`
+  max-width: 1200px;
   width: 100%;
-  /* margin: auto; */
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+`;
+
+export const ProfileCard = styled.div`
+  width: 300px;
+  /* width: 100%; */
   display: flex;
   flex-direction: column;
-  /* gap: 5px; */
   box-shadow: 0px 10px 25px 20px rgba(0, 0, 0, 0.2);
   padding: 20px 30px;
   border-radius: 10px;
@@ -20,6 +29,10 @@ export const ProfileCard = styled.div`
 
   svg {
     font-size: 60px;
+  }
+
+  h1 {
+    font-size: 20px;
   }
 
   p {

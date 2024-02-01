@@ -17,7 +17,7 @@ export const Contestants = () => {
   console.log(constestants);
   return (
     <Styles.ContestantContainer>
-      <div>
+      <Styles.ContestantWrapper>
         {constestants?.map((contestant) => (
           <Link key={contestant?._id} to={`/profile/${contestant?._id}`}>
             <Styles.ProfileCard>
@@ -35,7 +35,7 @@ export const Contestants = () => {
             </Styles.ProfileCard>
           </Link>
         ))}
-      </div>
+      </Styles.ContestantWrapper>
     </Styles.ContestantContainer>
   );
 };

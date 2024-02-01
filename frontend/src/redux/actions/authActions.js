@@ -1,6 +1,7 @@
 import { CONTESTANTS } from '../types';
 import * as api from '../api';
 import { toast } from 'react-toastify';
+// import { contestantAuth } from '../../components/RequireAuth';
 
 export const registerContestant = (contestantData) => async (dispatch) => {
   try {
@@ -38,7 +39,7 @@ export const loginContestant = (contestantData) => async (dispatch) => {
     localStorage.setItem('user', JSON.stringify(data.data));
 
     toast.success(data.msg);
-    window.location.href = '/profile';
+    window.location.href = `/profile/${data?.data?._id}`;
   } catch (err) {
     if (err.response && err.response.data) {
       toast.error(err.response.data.msg);
